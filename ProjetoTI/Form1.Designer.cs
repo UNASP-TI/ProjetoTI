@@ -41,9 +41,9 @@
             this.btLimpar = new System.Windows.Forms.Button();
             this.btDeletar = new System.Windows.Forms.Button();
             this.btProcurar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgAluno = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoAluno)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAluno)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -159,20 +159,20 @@
             this.btProcurar.UseVisualStyleBackColor = true;
             this.btProcurar.Click += new System.EventHandler(this.btProcurar_Click);
             // 
-            // dataGridView1
+            // dgAluno
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(36, 250);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(434, 184);
-            this.dataGridView1.TabIndex = 13;
+            this.dgAluno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAluno.Location = new System.Drawing.Point(36, 251);
+            this.dgAluno.Name = "dgAluno";
+            this.dgAluno.Size = new System.Drawing.Size(427, 218);
+            this.dgAluno.TabIndex = 13;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(523, 495);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgAluno);
             this.Controls.Add(this.btProcurar);
             this.Controls.Add(this.btDeletar);
             this.Controls.Add(this.btLimpar);
@@ -189,7 +189,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoAluno)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAluno)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,7 +210,7 @@
         private System.Windows.Forms.Button btLimpar;
         private System.Windows.Forms.Button btDeletar;
         private System.Windows.Forms.Button btProcurar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgAluno;
     }
 }
 

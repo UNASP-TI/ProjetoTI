@@ -19,27 +19,13 @@ namespace ProjetoTI
             InitializeComponent();
 
             carregarComboBox();
+            carregarDadosGrid();
 
             //configaração incial para adequar foto na exibição
             pbFotoAluno.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
-        private void carregarComboBox()
-        {
-            using (unaspContext db = new unaspContext())
-            {
-                //Adicionando programaticamente um item na comboBox para poder iniciar corretamente o programa
-                var list = new List<Object>();
-
-                list.Add(new { Id = -1, Nome = "Selecione o Estado" });
-                list.AddRange(db.Estado.Select(x => new { x.Id, x.Nome }).ToList());
-
-                //carregando a cmbox1
-                cbEstado.DataSource = list;
-                cbEstado.DisplayMember = "Nome";
-                cbEstado.ValueMember = "Id";
-            };
-        }
+       
 
         private void btCadastrar_Click(object sender, EventArgs e)
         {
@@ -88,7 +74,58 @@ namespace ProjetoTI
             }
         }
 
+        private void carregarComboBox()
+        {
+            using (unaspContext db = new unaspContext())
+            {
+                //Adicionando programaticamente um item na comboBox para poder iniciar corretamente o programa
+                var list = new List<Object>();
 
+                list.Add(new { Id = -1, Nome = "Selecione o Estado" });
+                list.AddRange(db.Estado.Select(x => new { x.Id, x.Nome }).ToList());
+
+                //carregando a cmbox1
+                cbEstado.DataSource = list;
+                cbEstado.DisplayMember = "Nome";
+                cbEstado.ValueMember = "Id";
+            };
+        }
+
+        private void carregarDadosGrid()
+        {
+
+            using (var db = new unaspContext())
+            {
+                //Database query direto na DataSource
+
+
+                dgAluno.DataSource = db.Aluno.Select(x =>
+                    new
+                    {
+                        Id = x.Id,
+                        Nome = x.Nome,
+                        Idade = x.Idade,
+                        Estado = x.IdEstadoNavigation.Nome,
+                        DataMatricula = x.DataMatricula
+                    }).OrderBy(x=> x.Id).ToList();
+
+                //Configuracoes de DataGridView
+                dgAluno.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgAluno.AutoGenerateColumns = false;
+                dgAluno.ReadOnly = true;
+
+
+                //Customizando as colunas
+                dgAluno.Columns["Id"].Visible = false;
+                //dgvAluno.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                //dgvAluno.Columns["Idade"].HeaderText = "Idade do aluno";
+                dgAluno.Columns["Idade"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgAluno.Columns["Estado"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgAluno.Columns["DataMatricula"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            }
+
+        }
 
         public byte[] imageToByteArray(System.Drawing.Image imageIn)
         {
