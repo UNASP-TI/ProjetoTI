@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,31 @@ namespace ProjetoTI
 
         private void btCadastrar_Click(object sender, EventArgs e)
         {
+            using (var db = new unaspContext())
+            {
+                Aluno aluno = new Aluno();                
 
+                //adiciona no objeto aluno informações que estão no Forms
+                aluno.Nome = txtNome.Text;
+                aluno.Idade = Convert.ToInt16(txtIdade.Text);
+                aluno.IdEstado = Convert.ToInt32(cbEstado.SelectedValue);
+                aluno.DataMatricula = dtpMatricula.Value;
+
+                //convertendo imagem para banco de dados
+                if (pbFotoAluno.ImageLocation != null)
+                {
+                    Image img = resizeImage(pbFotoAluno.Image, new Size(500, 500));
+                    byte[] bytes = imageToByteArray(img);
+                    aluno.Foto = bytes;
+                }
+                
+                db.Aluno.Add(aluno);
+
+                db.SaveChanges();
+                
+                MessageBox.Show("Aluno Adicionado!");
+
+            }
         }
 
         private void btProcurar_Click(object sender, EventArgs e)
@@ -61,6 +86,36 @@ namespace ProjetoTI
                     pbFotoAluno.ImageLocation = dlg.FileName;
                 }
             }
+        }
+
+
+
+        public byte[] imageToByteArray(System.Drawing.Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return ms.ToArray();
+        }
+
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            Image returnImage = null;
+            try
+            {
+                MemoryStream ms = new MemoryStream(byteArrayIn);
+                returnImage = Image.FromStream(ms);
+
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao Exibir Imagem!");
+            }
+            return returnImage;
+        }
+
+        public Image resizeImage(Image imgToResize, Size size)
+        {
+            return (Image)(new Bitmap(imgToResize, size));
         }
     }
 }
