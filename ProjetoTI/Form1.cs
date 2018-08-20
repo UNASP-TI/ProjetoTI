@@ -18,6 +18,9 @@ namespace ProjetoTI
             InitializeComponent();
 
             carregarComboBox();
+
+            //configaração incial para adequar foto na exibição
+            pbFotoAluno.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void carregarComboBox()
@@ -40,6 +43,24 @@ namespace ProjetoTI
         private void btCadastrar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btProcurar_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Selecione a foto do Aluno";
+                dlg.Filter = "All Files|*.*|JPG|*.jpg|PNG|*.png|GIF|*.gif";
+                dlg.Multiselect = false;
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    // Create a new Bitmap object from the picture file on disk,
+                    // and assign that to the PictureBox.Image property
+
+                    pbFotoAluno.ImageLocation = dlg.FileName;
+                }
+            }
         }
     }
 }

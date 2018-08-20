@@ -36,13 +36,13 @@
             this.txtIdade = new System.Windows.Forms.TextBox();
             this.cbEstado = new System.Windows.Forms.ComboBox();
             this.dtpMatricula = new System.Windows.Forms.DateTimePicker();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbFotoAluno = new System.Windows.Forms.PictureBox();
             this.btCadastrar = new System.Windows.Forms.Button();
             this.btLimpar = new System.Windows.Forms.Button();
             this.btDeletar = new System.Windows.Forms.Button();
             this.btProcurar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFotoAluno)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,18 +112,18 @@
             this.dtpMatricula.Size = new System.Drawing.Size(100, 20);
             this.dtpMatricula.TabIndex = 7;
             // 
-            // pictureBox1
+            // pbFotoAluno
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(36, 49);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 101);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            this.pbFotoAluno.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbFotoAluno.Location = new System.Drawing.Point(36, 49);
+            this.pbFotoAluno.Name = "pbFotoAluno";
+            this.pbFotoAluno.Size = new System.Drawing.Size(100, 101);
+            this.pbFotoAluno.TabIndex = 8;
+            this.pbFotoAluno.TabStop = false;
             // 
             // btCadastrar
             // 
-            this.btCadastrar.Location = new System.Drawing.Point(178, 191);
+            this.btCadastrar.Location = new System.Drawing.Point(192, 191);
             this.btCadastrar.Name = "btCadastrar";
             this.btCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btCadastrar.TabIndex = 9;
@@ -157,6 +157,7 @@
             this.btProcurar.TabIndex = 12;
             this.btProcurar.Text = "Procurar";
             this.btProcurar.UseVisualStyleBackColor = true;
+            this.btProcurar.Click += new System.EventHandler(this.btProcurar_Click);
             // 
             // dataGridView1
             // 
@@ -176,7 +177,7 @@
             this.Controls.Add(this.btDeletar);
             this.Controls.Add(this.btLimpar);
             this.Controls.Add(this.btCadastrar);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbFotoAluno);
             this.Controls.Add(this.dtpMatricula);
             this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.txtIdade);
@@ -187,7 +188,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFotoAluno)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -204,7 +205,7 @@
         private System.Windows.Forms.TextBox txtIdade;
         private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.DateTimePicker dtpMatricula;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbFotoAluno;
         private System.Windows.Forms.Button btCadastrar;
         private System.Windows.Forms.Button btLimpar;
         private System.Windows.Forms.Button btDeletar;
