@@ -166,6 +166,7 @@
             this.dgAluno.Name = "dgAluno";
             this.dgAluno.Size = new System.Drawing.Size(427, 218);
             this.dgAluno.TabIndex = 13;
+            this.dgAluno.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgAluno_MouseDoubleClick);
             // 
             // Form1
             // 

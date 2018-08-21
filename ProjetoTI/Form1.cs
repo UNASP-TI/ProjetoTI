@@ -154,5 +154,39 @@ namespace ProjetoTI
         {
             return (Image)(new Bitmap(imgToResize, size));
         }
+
+        private byte[] retornaImagemDoAluno(int idAluno)
+        {
+            using (var db = new unaspContext())
+            {
+                var fotoAluno = db.Aluno.First(x => x.Id == idAluno).Foto;
+
+                return fotoAluno;
+            }
+        }
+
+        private void dgAluno_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            btCadastrar.Text = "Atualizar";
+            btDeletar.Enabled = true;
+
+            var _grid = dgAluno.CurrentRow;
+
+            txtNome.Text = _grid.Cells["Nome"].Value.ToString();
+            txtIdade.Text = _grid.Cells["Idade"].Value.ToString();
+
+            //pega o nome do estado que está na gridView
+            string _estado = _grid.Cells["Estado"].Value.ToString();
+            cbEstado.SelectedIndex = cbEstado.FindStringExact(_estado);
+
+            //Imagem do aluno
+            int idAluno = Convert.ToInt16(_grid.Cells["Id"].Value.ToString());
+            byte[] fotoAlunoEmByte = retornaImagemDoAluno(idAluno);
+            pbFotoAluno.Image = byteArrayToImage(fotoAlunoEmByte);
+
+            //Data da Matricula
+            string dataMatricula = _grid.Cells["DataMatricula"].Value.ToString();
+            dtpMatricula.Value = DateTime.Parse(dataMatricula);
+        }
     }
 }
