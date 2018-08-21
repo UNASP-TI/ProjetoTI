@@ -139,6 +139,7 @@
             this.btLimpar.TabIndex = 10;
             this.btLimpar.Text = "Limpar";
             this.btLimpar.UseVisualStyleBackColor = true;
+            this.btLimpar.Click += new System.EventHandler(this.btLimpar_Click);
             // 
             // btDeletar
             // 

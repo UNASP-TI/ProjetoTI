@@ -20,6 +20,7 @@ namespace ProjetoTI
 
             carregarComboBox();
             carregarDadosGrid();
+            limparText();
 
             //configaração incial para adequar foto na exibição
             pbFotoAluno.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -187,6 +188,37 @@ namespace ProjetoTI
             //Data da Matricula
             string dataMatricula = _grid.Cells["DataMatricula"].Value.ToString();
             dtpMatricula.Value = DateTime.Parse(dataMatricula);
+        }
+
+        private void btLimpar_Click(object sender, EventArgs e)
+        {
+            limparText();
+        }
+
+        private void limparText()
+        {
+            // retira todo texto que estão nos text box
+            foreach (Control c in Controls)
+            {
+                if (c is TextBox)
+                {
+                    c.Text = "";
+                }
+            }
+            
+
+            //comboBox
+            cbEstado.SelectedIndex = 0;
+
+            //button
+            btCadastrar.Text = "Cadastrar";
+            btDeletar.Enabled = false;
+
+            //Imagem
+            pbFotoAluno.Image = null;
+            //Data da Matricula
+            dtpMatricula.Value = DateTime.Now;
+
         }
     }
 }
