@@ -18,21 +18,41 @@ namespace ProjetoTI
         {
             InitializeComponent();
 
+            Load();
+        }
+
+
+        private void Load()
+        {
+
             carregarComboBox();
             carregarDadosGrid();
+
             limparText();
+
+            txtNome.Focus();
 
             //configaração incial para adequar foto na exibição
             pbFotoAluno.SizeMode = PictureBoxSizeMode.StretchImage;
+
         }
 
-       
+
 
         private void btCadastrar_Click(object sender, EventArgs e)
         {
             using (var db = new unaspContext())
             {
-                Aluno aluno = new Aluno();                
+                Aluno aluno = new Aluno();
+
+
+                // Se a opção é atualizar, é necessário buscar as informações no banco de dados.
+                //O if abaixo verificar se o botão deletar está abilitado ou não.
+                if (btDeletar.Enabled)
+                {
+                    int _id = Convert.ToInt16(dgAluno.CurrentRow.Cells["Id"].Value);
+                    aluno = db.Aluno.FirstOrDefault(x => x.Id == _id);
+                }
 
                 //adiciona no objeto aluno informações que estão no Forms
                 aluno.Nome = txtNome.Text;
@@ -47,12 +67,16 @@ namespace ProjetoTI
                     byte[] bytes = imageToByteArray(img);
                     aluno.Foto = bytes;
                 }
-                
-                db.Aluno.Add(aluno);
+
+
+                //somente adiciona quando é um novo aluno
+                if (!btDeletar.Enabled)
+                    db.Aluno.Add(aluno);
 
                 db.SaveChanges();
-                
-                MessageBox.Show("Aluno Adicionado!");
+                                
+
+                Load();
 
             }
         }
