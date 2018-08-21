@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -123,9 +124,11 @@
             // 
             // btCadastrar
             // 
-            this.btCadastrar.Location = new System.Drawing.Point(192, 191);
+            this.btCadastrar.Image = ((System.Drawing.Image)(resources.GetObject("btCadastrar.Image")));
+            this.btCadastrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btCadastrar.Location = new System.Drawing.Point(167, 191);
             this.btCadastrar.Name = "btCadastrar";
-            this.btCadastrar.Size = new System.Drawing.Size(75, 23);
+            this.btCadastrar.Size = new System.Drawing.Size(95, 23);
             this.btCadastrar.TabIndex = 9;
             this.btCadastrar.Text = "Cadastrar";
             this.btCadastrar.UseVisualStyleBackColor = true;
@@ -133,9 +136,11 @@
             // 
             // btLimpar
             // 
-            this.btLimpar.Location = new System.Drawing.Point(293, 191);
+            this.btLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btLimpar.Image")));
+            this.btLimpar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btLimpar.Location = new System.Drawing.Point(268, 191);
             this.btLimpar.Name = "btLimpar";
-            this.btLimpar.Size = new System.Drawing.Size(75, 23);
+            this.btLimpar.Size = new System.Drawing.Size(93, 23);
             this.btLimpar.TabIndex = 10;
             this.btLimpar.Text = "Limpar";
             this.btLimpar.UseVisualStyleBackColor = true;
@@ -143,9 +148,11 @@
             // 
             // btDeletar
             // 
-            this.btDeletar.Location = new System.Drawing.Point(392, 191);
+            this.btDeletar.Image = ((System.Drawing.Image)(resources.GetObject("btDeletar.Image")));
+            this.btDeletar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btDeletar.Location = new System.Drawing.Point(367, 191);
             this.btDeletar.Name = "btDeletar";
-            this.btDeletar.Size = new System.Drawing.Size(75, 23);
+            this.btDeletar.Size = new System.Drawing.Size(100, 23);
             this.btDeletar.TabIndex = 11;
             this.btDeletar.Text = "Deletar";
             this.btDeletar.UseVisualStyleBackColor = true;
@@ -153,9 +160,11 @@
             // 
             // btProcurar
             // 
+            this.btProcurar.Image = ((System.Drawing.Image)(resources.GetObject("btProcurar.Image")));
+            this.btProcurar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btProcurar.Location = new System.Drawing.Point(33, 191);
             this.btProcurar.Name = "btProcurar";
-            this.btProcurar.Size = new System.Drawing.Size(75, 23);
+            this.btProcurar.Size = new System.Drawing.Size(103, 23);
             this.btProcurar.TabIndex = 12;
             this.btProcurar.Text = "Procurar";
             this.btProcurar.UseVisualStyleBackColor = true;
@@ -189,7 +198,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoAluno)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAluno)).EndInit();
