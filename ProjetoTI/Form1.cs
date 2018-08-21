@@ -244,5 +244,27 @@ namespace ProjetoTI
             dtpMatricula.Value = DateTime.Now;
 
         }
+
+        private void btDeletar_Click(object sender, EventArgs e)
+        {
+            var _grid = dgAluno.CurrentRow;
+
+            string nomeAluno = _grid.Cells["Nome"].Value.ToString();
+
+            DialogResult confirm = MessageBox.Show("Deseja Continuar?", "Deletar Aluno - " + nomeAluno, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+
+            if (DialogResult.Yes == confirm)
+            {
+                using (var db = new unaspContext())
+                {
+                    int _id = Convert.ToInt16(_grid.Cells["Id"].Value);
+                    Aluno aluno = db.Aluno.FirstOrDefault(x => x.Id == _id);
+
+                    db.Aluno.Remove(aluno);
+                    db.SaveChanges();
+                    Load();
+                };
+            }
+        }
     }
 }

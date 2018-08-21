@@ -149,6 +149,7 @@
             this.btDeletar.TabIndex = 11;
             this.btDeletar.Text = "Deletar";
             this.btDeletar.UseVisualStyleBackColor = true;
+            this.btDeletar.Click += new System.EventHandler(this.btDeletar_Click);
             // 
             // btProcurar
             // 
